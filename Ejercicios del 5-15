@@ -1,0 +1,221 @@
+
+import tkinter as tk
+from tkinter import messagebox
+import random
+
+# Función para el descuento en la tienda
+def descuento_tienda():
+    def calcular_descuento():
+        try:
+            cantidad = float(entry_cantidad.get())
+            descuento = float(entry_descuento.get())
+            if descuento in [25, 50, 75]:
+                total = cantidad * (1 - descuento / 100)
+                resultado_label.config(text=f"Precio final: ${total:.2f}")
+            else:
+                messagebox.showerror("Error", "Descuento no válido. Use 25, 50 o 75.")
+        except ValueError:
+            messagebox.showerror("Error", "Ingrese números válidos.")
+    
+    ventana = tk.Toplevel(root)
+    ventana.title("Descuento en una tienda")
+    ventana.geometry("400x200")
+
+    frame = tk.Frame(ventana)
+    frame.pack(expand=True, fill="both", padx=10, pady=10)
+
+    tk.Label(ventana, text="Cantidad de dinero:", bg="#FAD0C3").pack(pady=5)
+    entry_cantidad = tk.Entry(ventana)
+    entry_cantidad.pack(pady=5)
+    tk.Label(ventana, text="Descuento (25, 50, 75):", bg="#FAD0C3").pack(pady=5)
+    entry_descuento = tk.Entry(ventana)
+    entry_descuento.pack(pady=5)
+    tk.Button(ventana, text="Calcular", command=calcular_descuento, bg="#A7D8D3", fg="#FFFFFF").pack(pady=5)
+    resultado_label = tk.Label(ventana, text="", bg="#FAD0C3")
+    resultado_label.pack(pady=5)
+
+# Función para edad para votar
+def edad_para_votar():
+    def verificar_edad():
+        try:
+            edad = int(entry_edad.get())
+            if edad >= 18:
+                resultado_label.config(text="Puedes votar.")
+            else:
+                resultado_label.config(text="No puedes votar.")
+        except ValueError:
+            messagebox.showerror("Error", "Ingrese una edad válida.")
+
+    ventana = tk.Toplevel(root)
+    ventana.title("Edad para votar")
+    ventana.geometry("400x200")
+
+    frame = tk.Frame(ventana)
+    frame.pack(expand=True, fill="both", padx=10, pady=10)
+
+    tk.Label(ventana, text="Ingrese su edad:", bg="#FAD0C3").pack(pady=5)
+    entry_edad = tk.Entry(ventana)
+    entry_edad.pack(pady=5)
+    tk.Button(ventana, text="Verificar", command=verificar_edad, bg="#A7D8D3", fg="#FFFFFF").pack(pady=5)
+    resultado_label = tk.Label(ventana, text="", bg="#FAD0C3")
+    resultado_label.pack(pady=5)
+
+# Función para mayor de tres números
+def mayor_de_tres_numeros():
+    def verificar_mayor():
+        try:
+            nums = [float(entry1.get()), float(entry2.get()), float(entry3.get())]
+            mayor = max(nums)
+            resultado_label.config(text=f"El mayor es: {mayor}")
+        except ValueError:
+            messagebox.showerror("Error", "Ingrese números válidos.")
+
+    ventana = tk.Toplevel(root)
+    ventana.title("Mayor de tres números")
+    ventana.geometry("400x200")
+
+    frame = tk.Frame(ventana)
+    frame.pack(expand=True, fill="both", padx=10, pady=10)
+
+    tk.Label(ventana, text="Ingrese tres números:", bg="#FAD0C3").pack(pady=5)
+    entry1 = tk.Entry(ventana)
+    entry1.pack(pady=5)
+    entry2 = tk.Entry(ventana)
+    entry2.pack(pady=5)
+    entry3 = tk.Entry(ventana)
+    entry3.pack(pady=5)
+    tk.Button(ventana, text="Calcular", command=verificar_mayor, bg="#A7D8D3", fg="#FFFFFF").pack(pady=5)
+    resultado_label = tk.Label(ventana, text="", bg="#FAD0C3")
+    resultado_label.pack(pady=5)
+
+# Función para clasificación de edades
+def clasificacion_edades():
+    def clasificar():
+        try:
+            edad = int(entry_edad.get())
+            if edad <= 12:
+                resultado_label.config(text="Eres un niño.")
+            elif edad <= 17:
+                resultado_label.config(text="Eres un adolescente.")
+            else:
+                resultado_label.config(text="Eres un adulto.")
+        except ValueError:
+            messagebox.showerror("Error", "Ingrese una edad válida.")
+
+    ventana = tk.Toplevel(root)
+    ventana.title("Clasificación de edades")
+    ventana.geometry("400x200")
+
+    frame = tk.Frame(ventana)
+    frame.pack(expand=True, fill="both", padx=10, pady=10)
+
+    tk.Label(ventana, text="Ingrese su edad:", bg="#FAD0C3").pack(pady=5)
+    entry_edad = tk.Entry(ventana)
+    entry_edad.pack(pady=5)
+    tk.Button(ventana, text="Clasificar", command=clasificar, bg="#A7D8D3", fg="#FFFFFF").pack(pady=5)
+    resultado_label = tk.Label(ventana, text="", bg="#FAD0C3")
+    resultado_label.pack(pady=5)
+
+# Función para la calculadora básica
+def calculadora_basica():
+    def calcular():
+        try:
+            num1 = float(entry1.get())
+            num2 = float(entry2.get())
+            suma = num1 + num2
+            resta = num1 - num2
+            multi = num1 * num2
+            division = num1 / num2 if num2 != 0 else "Infinito (división por 0)"
+            resultado_label.config(
+                text=f"Suma: {suma}\nResta: {resta}\nMultiplicación: {multi}\nDivisión: {division}"
+            )
+        except ValueError:
+            messagebox.showerror("Error", "Ingrese números válidos.")
+
+    ventana = tk.Toplevel(root)
+    ventana.title("Calculadora básica")
+    ventana.geometry("400x200")
+
+    frame = tk.Frame(ventana)
+    frame.pack(expand=True, fill="both", padx=10, pady=10)
+
+    tk.Label(ventana, text="Ingrese dos números:", bg="#FAD0C3").pack(pady=5)
+    entry1 = tk.Entry(ventana)
+    entry1.pack(pady=5)
+    entry2 = tk.Entry(ventana)
+    entry2.pack(pady=5)
+    tk.Button(ventana, text="Calcular", command=calcular, bg="#A7D8D3", fg="#FFFFFF").pack(pady=5)
+    resultado_label = tk.Label(ventana, text="", bg="#FAD0C3")
+    resultado_label.pack(pady=5)
+
+# Función para determinar si es un año bisiesto
+def determinar_bisiesto():
+    def verificar_bisiesto():
+        try:
+            year = int(entry_year.get())
+            if (year % 4 == 0 and year % 100 != 0) or year % 400 == 0:
+                resultado_label.config(text=f"{year} es un año bisiesto.")
+            else:
+                resultado_label.config(text=f"{year} no es un año bisiesto.")
+        except ValueError:
+            messagebox.showerror("Error", "Ingrese un año válido.")
+
+    ventana = tk.Toplevel(root)
+    ventana.title("Determinar año bisiesto")
+    ventana.geometry("400x200")
+
+    frame = tk.Frame(ventana)
+    frame.pack(expand=True, fill="both", padx=10, pady=10)
+
+    tk.Label(ventana, text="Ingrese un año:", bg="#FAD0C3").pack(pady=5)
+    entry_year = tk.Entry(ventana)
+    entry_year.pack(pady=5)
+    tk.Button(ventana, text="Verificar", command=verificar_bisiesto, bg="#A7D8D3", fg="#FFFFFF").pack(pady=5)
+    resultado_label = tk.Label(ventana, text="", bg="#FAD0C3")
+    resultado_label.pack(pady=5)
+
+# Función para validar contraseñas
+def validar_contraseña():
+    def verificar_contraseña():
+        contraseña = entry_contraseña.get()
+        if contraseña == "12345":
+            messagebox.showinfo("Acceso", "Acceso concedido.")
+        else:
+            messagebox.showerror("Error", "Contraseña incorrecta.")
+
+    ventana = tk.Toplevel(root)
+    ventana.title("Validar contraseña")
+    ventana.geometry("400x200")
+
+    frame = tk.Frame(ventana)
+    frame.pack(expand=True, fill="both", padx=10, pady=10)
+
+    tk.Label(ventana, text="Ingrese la contraseña:", bg="#FAD0C3").pack(pady=5)
+    entry_contraseña = tk.Entry(ventana, show="*")
+    entry_contraseña.pack(pady=5)
+    tk.Button(ventana, text="Verificar", command=verificar_contraseña, bg="#A7D8D3", fg="#FFFFFF").pack(pady=5)
+
+# Crear la ventana principal
+root = tk.Tk()
+root.title("Aplicaciones")
+root.geometry("500x600")
+
+frame_principal = tk.Frame(root, bg="#FAD0C3")
+frame_principal.pack(expand=True, fill="both")
+
+titulo_label = tk.Label(frame_principal, text="Selecciona una opción", font=("Arial", 16), bg="#FAD0C3")
+titulo_label.pack(pady=20)
+
+# Crear los botones
+tk.Button(frame_principal, text="Descuento en la tienda", command=descuento_tienda, bg="#A7D8D3", fg="#FFFFFF").pack(pady=10)
+tk.Button(frame_principal, text="Edad para votar", command=edad_para_votar, bg="#A7D8D3", fg="#FFFFFF").pack(pady=10)
+tk.Button(frame_principal, text="Mayor de tres números", command=mayor_de_tres_numeros, bg="#A7D8D3", fg="#FFFFFF").pack(pady=10)
+tk.Button(frame_principal, text="Clasificación de edades", command=clasificacion_edades, bg="#A7D8D3", fg="#FFFFFF").pack(pady=10)
+tk.Button(frame_principal, text="Calculadora básica", command=calculadora_basica, bg="#A7D8D3", fg="#FFFFFF").pack(pady=10)
+tk.Button(frame_principal, text="Año bisiesto", command=determinar_bisiesto, bg="#A7D8D3", fg="#FFFFFF").pack(pady=10)
+tk.Button(frame_principal, text="Validar contraseña", command=validar_contraseña, bg="#A7D8D3", fg="#FFFFFF").pack(pady=10)
+
+root.mainloop()
+
+
+

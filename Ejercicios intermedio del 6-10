@@ -1,0 +1,140 @@
+import tkinter as tk 
+from tkinter import messagebox
+import math
+
+# Funciones para cada acción
+def saludo_amistoso():
+    def mostrar_mensaje():
+        nombre = entrada_nombre.get()
+        mensaje = f"¡Hola, {nombre}!"
+        messagebox.showinfo("Saludo", mensaje)
+    
+    ventana = tk.Toplevel(ventana_principal)
+    ventana.title("Saludo Personalizado")
+    ventana.geometry("300x180")
+    
+    frame = tk.Frame(ventana, bg="#E6F2FF")
+    frame.pack(expand=True, fill="both", padx=15, pady=15)
+
+    tk.Label(ventana, text="Escribe tu nombre:", bg="#E6F2FF").pack(pady=5)
+    entrada_nombre = tk.Entry(ventana)
+    entrada_nombre.pack(pady=5)
+    tk.Button(ventana, text="Generar Saludo", command=mostrar_mensaje, bg="#A2C2E5").pack(pady=10)
+    tk.Button(ventana, text="Volver al menú", command=ventana.destroy, bg="#A2C2E5").pack(pady=5)
+
+def suma_dos_numeros():
+    def calcular_resultado():
+        try:
+            numero1 = float(entrada_num1.get())
+            numero2 = float(entrada_num2.get())
+            resultado = numero1 + numero2
+            messagebox.showinfo("Resultado", f"La suma es: {resultado}")
+        except ValueError:
+            messagebox.showerror("Error", "Ingresar números válidos.")
+    
+    ventana = tk.Toplevel(ventana_principal)
+    ventana.title("Suma de Números")
+    ventana.geometry("400x220")
+    
+    frame = tk.Frame(ventana, bg="#D4F1F4")
+    frame.pack(expand=True, fill="both", padx=15, pady=15)
+
+    tk.Label(ventana, text="Primer número:", bg="#D4F1F4").pack(pady=5)
+    entrada_num1 = tk.Entry(ventana)
+    entrada_num1.pack(pady=5)
+    tk.Label(ventana, text="Segundo número:", bg="#D4F1F4").pack(pady=5)
+    entrada_num2 = tk.Entry(ventana)
+    entrada_num2.pack(pady=5)
+    tk.Button(ventana, text="Calcular suma", command=calcular_resultado, bg="#A2C2E5").pack(pady=10)
+    tk.Button(ventana, text="Volver al menú", command=ventana.destroy, bg="#A2C2E5").pack(pady=5)
+
+def verificar_par_o_impar():
+    def mostrar_paridad():
+        try:
+            numero = int(entrada_num.get())
+            if numero % 2 == 0:
+                messagebox.showinfo("Resultado", "El número es par.")
+            else:
+                messagebox.showinfo("Resultado", "El número es impar.")
+        except ValueError:
+            messagebox.showerror("Error", "Por favor, ingrese un número válido.")
+    
+    ventana = tk.Toplevel(ventana_principal)
+    ventana.title("Número Par o Impar")
+    ventana.geometry("400x200")
+    
+    frame = tk.Frame(ventana, bg="#E8F9F3")
+    frame.pack(expand=True, fill="both", padx=15, pady=15)
+
+    tk.Label(ventana, text="Ingrese un número:", bg="#E8F9F3").pack(pady=5)
+    entrada_num = tk.Entry(ventana)
+    entrada_num.pack(pady=5)
+    tk.Button(ventana, text="Verificar", command=mostrar_paridad, bg="#A2C2E5").pack(pady=10)
+    tk.Button(ventana, text="Volver al menú", command=ventana.destroy, bg="#A2C2E5").pack(pady=5)
+
+def calcular_cuadrado():
+    def obtener_cuadrado():
+        try:
+            numero = float(entrada_num.get())
+            cuadrado = numero ** 2
+            messagebox.showinfo("Resultado", f"El cuadrado de {numero} es: {cuadrado}")
+        except ValueError:
+            messagebox.showerror("Error", "Por favor, ingrese un número válido.")
+    
+    ventana = tk.Toplevel(ventana_principal)
+    ventana.title("Calcular Cuadrado")
+    ventana.geometry("400x220")
+    
+    frame = tk.Frame(ventana, bg="#D1E8E2")
+    frame.pack(expand=True, fill="both", padx=15, pady=15)
+
+    tk.Label(ventana, text="Ingrese un número:", bg="#D1E8E2").pack(pady=5)
+    entrada_num = tk.Entry(ventana)
+    entrada_num.pack(pady=5)
+    tk.Button(ventana, text="Calcular cuadrado", command=obtener_cuadrado, bg="#A2C2E5").pack(pady=10)
+    tk.Button(ventana, text="Volver al menú", command=ventana.destroy, bg="#A2C2E5").pack(pady=5)
+
+def calcular_area_circulo():
+    def obtener_area():
+        try:
+            radio = float(entrada_radio.get())
+            area = math.pi * (radio ** 2)
+            messagebox.showinfo("Resultado", f"El área del círculo es: {area:.2f}")
+        except ValueError:
+            messagebox.showerror("Error", "Por favor, ingrese un valor válido para el radio.")
+    
+    ventana = tk.Toplevel(ventana_principal)
+    ventana.title("Área de Círculo")
+    ventana.geometry("400x220")
+    
+    frame = tk.Frame(ventana, bg="#F2F9F4")
+    frame.pack(expand=True, fill="both", padx=15, pady=15)
+
+    tk.Label(ventana, text="Ingrese el radio del círculo:", bg="#F2F9F4").pack(pady=5)
+    entrada_radio = tk.Entry(ventana)
+    entrada_radio.pack(pady=5)
+    tk.Button(ventana, text="Calcular área", command=obtener_area, bg="#A2C2E5").pack(pady=10)
+    tk.Button(ventana, text="Volver al menú", command=ventana.destroy, bg="#A2C2E5").pack(pady=5)
+
+# Ventana principal
+ventana_principal = tk.Tk()
+ventana_principal.title("Aplicaciones Matemáticas")
+ventana_principal.geometry("400x500")
+ventana_principal.config(bg="#FFEBF3")
+
+# Etiquetas de bienvenida
+tk.Label(ventana_principal, text="¡Bienvenido!", font=("Arial", 14), bg="#FFEBF3").pack(pady=15)
+tk.Label(ventana_principal, text="Selecciona una opción:", font=("Arial", 12), bg="#FFEBF3").pack(pady=10)
+
+# Estilo de botones
+estilo_botones = {'width': 30, 'height': 2, 'font': ('Arial', 12), 'bg': '#A2C2E5', 'fg': 'black', 'activebackground': '#A8D0E6'}
+
+# Botones para las opciones
+tk.Button(ventana_principal, text="1. Saludo Personalizado", **estilo_botones, command=saludo_amistoso).pack(pady=10)
+tk.Button(ventana_principal, text="2. Suma de dos números", **estilo_botones, command=suma_dos_numeros).pack(pady=10)
+tk.Button(ventana_principal, text="3. Número Par o Impar", **estilo_botones, command=verificar_par_o_impar).pack(pady=10)
+tk.Button(ventana_principal, text="4. Calcular el cuadrado", **estilo_botones, command=calcular_cuadrado).pack(pady=10)
+tk.Button(ventana_principal, text="5. Calcular el área de un círculo", **estilo_botones, command=calcular_area_circulo).pack(pady=10)
+
+# Ejecutar la interfaz
+ventana_principal.mainloop()
